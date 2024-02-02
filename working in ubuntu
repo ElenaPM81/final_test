@@ -1,0 +1,481 @@
+
+1. Используя команду cat в терминале операционной системы Linux, создать
+два файла Домашние животные (заполнив файл собаками, кошками,
+хомяками) и Вьючные животными заполнив файл Лошадьми, верблюдами и
+ослы), а затем объединить их. Просмотреть содержимое созданного файла.
+Переименовать файл, дав ему новое имя (Друзья человека).
+
+
+em@em-VirtualBox:~$ sudo su
+[sudo] пароль для em:
+root@em-VirtualBox:/home/em# cat > pets.txt
+dogs
+cats
+hamsters
+root@em-VirtualBox:/home/em# cat > pack_animals.txt
+horses
+camels
+donkeys
+root@em-VirtualBox:/home/em# cat pets.txt pack_animals.txt > animals.txt
+root@em-VirtualBox:/home/em# cat  animals.txt
+dogs
+cats
+hamsters
+horses
+camels
+donkeys
+root@em-VirtualBox:/home/em# mv  animals.txt man_friends.txt
+root@em-VirtualBox:/home/em#
+
+2. Создать директорию, переместить файл туда.
+
+root@em-VirtualBox:/home/em# mkdir animals_cat
+root@em-VirtualBox:/home/em# mv man_friends.txt animals_cat
+
+3. Подключить дополнительный репозиторий MySQL. Установить любой пакет
+из этого репозитория.
+
+root@em-VirtualBox:~#  sudo apt-get install mysql-server
+Чтение списков пакетов… Готово
+Построение дерева зависимостей… Готово
+Чтение информации о состоянии… Готово
+Следующие НОВЫЕ пакеты будут установлены:
+  mysql-server
+Обновлено 0 пакетов, установлено 1 новых пакетов, для удаления отмечено 0 пакетов, и 2 пакетов не обновлено.
+Необходимо скачать 9 464 B архивов.
+После данной операции объём занятого дискового пространства возрастёт на 35,8 kB.
+Пол:1 http://ru.archive.ubuntu.com/ubuntu jammy-updates/main amd64 mysql-server all 8.0.35-0ubuntu0.22.04.1 [9 464 B]
+Получено 9 464 B за 0с (36,0 kB/s)
+Выбор ранее не выбранного пакета mysql-server.
+(Чтение базы данных … на данный момент установлено 207755 файлов и каталогов.)
+Подготовка к распаковке …/mysql-server_8.0.35-0ubuntu0.22.04.1_all.deb …
+Распаковывается mysql-server (8.0.35-0ubuntu0.22.04.1) …
+Настраивается пакет mysql-server (8.0.35-0ubuntu0.22.04.1) …
+
+
+root@em-VirtualBox:~# dpkg -l | grep mysql | grep ii
+ii  mysql-client-8.0                           8.0.35-0ubuntu0.22.04.1                 amd64        MySQL database client binaries
+ii  mysql-client-core-8.0                      8.0.35-0ubuntu0.22.04.1                 amd64        MySQL database core client binaries
+ii  mysql-common                               5.8+1.0.8                               all          MySQL database common files, e.g. /etc/mysql/my.cnf
+ii  mysql-server                               8.0.35-0ubuntu0.22.04.1                 all          MySQL database server (metapackage depending on the latest version)
+ii  mysql-server-8.0                           8.0.35-0ubuntu0.22.04.1                 amd64        MySQL database server binaries and system database setup
+ii  mysql-server-core-8.0                      8.0.35-0ubuntu0.22.04.1                 amd64        MySQL database server binaries
+
+
+root@em-VirtualBox:~# sudo apt-get install  mysql-client-8.0
+Чтение списков пакетов… Готово
+Построение дерева зависимостей… Готово
+Чтение информации о состоянии… Готово
+Уже установлен пакет mysql-client-8.0 самой новой версии (8.0.35-0ubuntu0.22.04.1).
+mysql-client-8.0 помечен как установленный вручную.
+Обновлено 0 пакетов, установлено 0 новых пакетов, для удаления отмечено 0 пакетов, и 2 пакетов не обновлено.
+
+4. Установить и удалить deb-пакет с помощью dpkg.
+
+root@em-VirtualBox:~# root@em-VirtualBox:~# sudo apt install -y nginx
+Чтение списков пакетов… Готово
+Построение дерева зависимостей… Готово
+Чтение информации о состоянии… Готово
+Следующие НОВЫЕ пакеты будут установлены:
+  nginx
+Обновлено 0 пакетов, установлено 1 новых пакетов, для удаления отмечено 0 пакетов, и 2 пакетов не обновлено.
+Необходимо скачать 3 872 B архивов.
+После данной операции объём занятого дискового пространства возрастёт на 50,2 kB.
+Пол:1 http://ru.archive.ubuntu.com/ubuntu jammy-updates/main amd64 nginx amd64 1.18.0-6ubuntu14.4 [3 872 B]
+Получено 3 872 B за 1с (7 201 B/s)
+Выбор ранее не выбранного пакета nginx.
+(Чтение базы данных … на данный момент установлено 207842 файла и каталога.)
+Подготовка к распаковке …/nginx_1.18.0-6ubuntu14.4_amd64.deb …
+Распаковывается nginx (1.18.0-6ubuntu14.4) …
+Настраивается пакет nginx (1.18.0-6ubuntu14.4) …
+
+
+root@em-VirtualBox:~# dpkg -l nginx
+Желаемый=неизвестно[u]/установить[i]/удалить[r]/вычистить[p]/зафиксировать[h]
+| Состояние=не[n]/установлен[i]/настроен[c]/распакован[U]/частично настроен[F]/
+            частично установлен[H]/trig-aWait/Trig-pend
+|/ Ошибка?=(нет)/требуется переустановка[R] (верхний регистр
+в полях состояния и ошибки указывает на ненормальную ситуацию)
+||/ Имя            Версия             Архитектура  Описание
++++-==============-==================-============-==========================================
+ii  nginx          1.18.0-6ubuntu14.4 amd64        small, powerful, scalable web/proxy server
+
+
+root@em-VirtualBox:~# sudo dpkg -r nginx
+(Чтение базы данных … на данный момент установлено 207845 файлов и каталогов.)
+Удаляется nginx (1.18.0-6ubuntu14.4) …
+root@em-VirtualBox:~#
+
+5. Выложить историю команд в терминале ubuntu
+
+root@em-VirtualBox:~# history
+    1  em@em-VirtualBox:~$ sudo su
+    2  [sudo] пароль для em:
+    3  root@em-VirtualBox:/home/em#
+    4  cat > pets.txt
+    5  cat > pack_animals.txt
+    6  cat pets.txt pack_animals.txt > animals.txt
+    7  cat  animals.txt
+    8  mv  animals.txt man_friends.txt
+    9  clear
+   10  mkdir animals_cat
+   11  mv man_friends.txt animals_cat
+   12  cd /etc/apt
+   13  ll
+   14  cat  sources.list
+   15 echo "deb  http://ppa.launchpad.net/nginx/stable/ubuntu lucid main" >> /etc/apt/sources.list
+   16  sudo apt update
+   17  systemctl status mysql
+   18  sudo apt-get update
+   19  sudo apt-get build-dep mysql-server 
+   20  apt-get source -b mysql-server
+   21  clear
+   22 sudo apt install -y nginx
+   23  dpkg -l nginx
+   24 sudo dpkg -r nginx
+   25  history
+  
+
+7. В подключенном MySQL репозитории создать базу данных “Друзья
+человека”
+
+root@em-VirtualBox:~# systemctl status mysql
+● mysql.service - MySQL Community Server
+     Loaded: loaded (/lib/systemd/system/mysql.service; enabled; vendor preset: enabled)
+     Active: active (running) since Tue 2024-01-30 21:00:54 +10; 1h 29min ago
+   Main PID: 714 (mysqld)
+     Status: "Server is operational"
+      Tasks: 37 (limit: 2260)
+     Memory: 303.7M
+        CPU: 10.094s
+     CGroup: /system.slice/mysql.service
+             └─714 /usr/sbin/mysqld
+
+янв 30 21:00:52 em-VirtualBox systemd[1]: Starting MySQL Community Server...
+янв 30 21:00:54 em-VirtualBox systemd[1]: Started MySQL Community Server.
+root@em-VirtualBox:~# mysql
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.35-0ubuntu0.22.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++----------------------------+
+| Database                           |
++----------------------------+
+| information_schema   |
+| mysql                                 |
+| performance_schema |
+| sys                                       |
++----------------------------+
+4 rows in set (0,09 sec)
+
+mysql> CREATE DATABASE man_friends;
+Query OK, 1 row affected (0,04 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| man_friends        |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0,00 sec)
+
+8. Создать таблицы с иерархией из диаграммы в БД
+9. Заполнить низкоуровневые таблицы именами(животных), командами
+которые они выполняют и датами рождения
+
+
+mysql>  CREATE TABLE animal(id INT PRIMARY KEY  , type VARCHAR(40));
+Query OK, 0 rows affected (0,04 sec)
+
+mysql>  INSERT INTO animal VALUES (1,'pet'),(2, 'pack_animal');
+Query OK, 2 rows affected (0,03 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM animal;
++----+-------------+
+| id | type        |
++----+-------------+
+|  1 | pet         |
+|  2 | pack_animal |
++----+-------------+
+2 rows in set (0,00 sec)
+
+mysql>  CREATE TABLE pet( id INT AUTO_INCREMENT PRIMARY KEY , animal_name VARCHAR(40),animal_id INT,  FOREIGN KEY (animal
+_id) REFERENCES animal (id));
+Query OK, 0 rows affected (0,05 sec)
+
+mysql>  INSERT INTO pet(animal_name, animal_id) VALUES('dog', 1),('cat', 1),('hamster', 1);
+Query OK, 3 rows affected (0,01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM pet;
++----+-------------+-----------+
+| id | animal_name | animal_id |
++----+-------------+-----------+
+|  1 | dog         |         1 |
+|  2 | cat         |         1 |
+|  3 | hamster     |         1 |
++----+-------------+-----------+
+3 rows in set (0,00 sec)
+
+mysql>  CREATE TABLE pack_animal( id INT AUTO_INCREMENT PRIMARY KEY , animal_name VARCHAR(40), animal_id INT,  FOREIGN KE
+Y (animal_id) REFERENCES animal (id));
+Query OK, 0 rows affected (0,05 sec)
+
+mysql>  INSERT INTO pack_animal(animal_name, animal_id) VALUES('horse', 2),('camels', 2),('donkey', 2);
+Query OK, 3 rows affected (0,02 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM pack_animal;
++----+-------------+-----------+
+| id | animal_name | animal_id |
++----+-------------+-----------+
+|  1 | horse       |         2 |
+|  2 | camels      |         2 |
+|  3 | donkey      |         2 |
++----+-------------+-----------+
+3 rows in set (0,00 sec)
+
+mysql>  CREATE TABLE dog( id INT AUTO_INCREMENT PRIMARY KEY , dog_name VARCHAR(40),date_of_birth DATE,command VARCHAR(100), pet_id INT,  FOREIGN KEY (pet_id) REFERENCES pet(id));
+Query OK, 0 rows affected (0,05 sec)
+
+mysql>  INSERT INTO dog( dog_name, date_of_birth, command, pet_id) VALUES('Тузик', '2022-10-1', 'сидеть', 1),('Шарик', '2
+021-08-01', 'голос', 1),('Жучка', '2023-07-13', 'лежать', 1);
+Query OK, 3 rows affected (0,03 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+
+
+mysql>  CREATE TABLE cat( id INT AUTO_INCREMENT PRIMARY KEY , cat_name VARCHAR(40), date_of_birth DATE,command VARCHAR(100), pet_id INT,  FOREIGN KEY (pet_id) REFERENCES pet(id));
+Query OK, 0 rows affected (0,03 sec)
+
+mysql> INSERT INTO cat( cat_name, date_of_birth, command, pet_id) VALUES('Мурзик', '2022-11-09', 'ко мне', 2),('Барсик','2023-12-10', 'проси', 2),('Вася', '2023-07-13', 'лежать', 2);
+Query OK, 3 rows affected (0,01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+
+
+mysql>  CREATE TABLE hamster( id INT AUTO_INCREMENT PRIMARY KEY , hamster_name VARCHAR(40), date_of_birth DATE,command VARCHAR(100), pet_id INT,  FOREIGN KEY (pet_id) REFERENCES pet(id));
+Query OK, 0 rows affected (0,06 sec)
+
+mysql> INSERT INTO hamster( hamster_name, date_of_birth, command, pet_id) VALUES('Пончик', '2022-12-11', 'стоять', 3),('Р
+ыжик','2022-11-11', 'бегать по кругу', 3),('Венчик', '2022-10.16', 'ползти', 3);
+Query OK, 3 rows affected, 1 warning (0,01 sec)
+Records: 3  Duplicates: 0  Warnings: 1
+
+
+mysql>  CREATE TABLE horse( id INT AUTO_INCREMENT PRIMARY KEY , horse_name VARCHAR(40), date_of_birth DATE,command VARCHA
+R(100), pack_animal_id INT,  FOREIGN KEY (pack_animal_id) REFERENCES pack_animal(id));
+Query OK, 0 rows affected (0,03 sec)
+
+mysql> INSERT INTO horse(horse_name, date_of_birth, command, pack_animal_id) VALUES('Ангел', '2018-11-23', 'подойти', 1),
+('Дарко','2020-08-03', 'бегать по кругу', 1),('Буран', '2021-04-12', 'лежать', 1);
+Query OK, 3 rows affected (0,00 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+
+mysql>  CREATE TABLE camel( id INT AUTO_INCREMENT PRIMARY KEY , camel_name VARCHAR(40), date_of_birth DATE,command VARCHA
+R(100)
+Query OK, 0 rows affected (0,05 sec)
+
+mysql> INSERT INTO camel(camel_name, date_of_birth, command, pack_animal_id) VALUES('Гордый', '2022-05-02', 'подойти', 2)
+,('Джу','2016-10-22', 'лежать', 2),('Чакайд', '2021-04-12', 'лежать', 2);
+Query OK, 3 rows affected (0,03 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+
+
+mysql>  CREATE TABLE donkey( id INT AUTO_INCREMENT PRIMARY KEY , donkey_name VARCHAR(40), date_of_birth DATE,command VARC
+HAR(100), pack_animal_id INT,  FOREIGN KEY (pack_animal_id) REFERENCES pack_animal(id));
+Query OK, 0 rows affected (0,03 sec)
+
+mysql> INSERT INTO donkey(donkey_name, date_of_birth, command, pack_animal_id) VALUES('Рокси', '2018-02-03', 'бегать по кругу', 3),('Бони','2019-11-01', 'принеси', 3),('Луна', '2022-04-09', 'лежать', 3);
+Query OK, 3 rows affected (0,01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+
+
+mysql> SELECT * FROM dog;
++----+------------+---------------+--------------+--------+
+| id | dog_name   | date_of_birth | command      | pet_id |
++----+------------+---------------+--------------+--------+
+|  1 | Тузик      | 2022-10-01    | сидеть       |      1 |
+|  2 | Шарик      | 2021-08-01    | голос        |      1 |
+|  3 | Жучка      | 2023-07-13    | лежать       |      1 |
++----+------------+---------------+--------------+--------+
+3 rows in set (0,00 sec)
+
+mysql> SELECT * FROM cat;
++----+--------------+---------------+--------------+--------+
+| id | cat_name     | date_of_birth | command      | pet_id |
++----+--------------+---------------+--------------+--------+
+|  1 | Мурзик       | 2022-11-09    | ко мне       |      2 |
+|  2 | Барсик       | 2023-12-10    | проси        |      2 |
+|  3 | Вася         | 2023-07-13    | лежать       |      2 |
++----+--------------+---------------+--------------+--------+
+3 rows in set (0,00 sec)
+
+mysql> SELECT * FROM hamster;
++----+--------------+---------------+------------------------------+--------+
+| id | hamster_name | date_of_birth | command                      | pet_id |
++----+--------------+---------------+------------------------------+--------+
+|  1 | Пончик       | 2022-12-11    | стоять                       |      3 |
+|  2 | Рыжик        | 2022-11-11    | бегать по кругу              |      3 |
+|  3 | Венчик       | 2022-10-16    | ползти                       |      3 |
++----+--------------+---------------+------------------------------+--------+
+3 rows in set (0,00 sec)
+
+
+mysql> SELECT * FROM horse;
++----+------------+---------------+------------------------------+----------------+
+| id | horse_name | date_of_birth | command                      | pack_animal_id |
++----+------------+---------------+------------------------------+----------------+
+|  1 | Ангел      | 2018-11-23    | подойти                      |              1 |
+|  2 | Дарко      | 2020-08-03    | бегать по кругу              |              1 |
+|  3 | Буран      | 2021-04-12    | лежать                       |              1 |
++----+------------+---------------+------------------------------+----------------+
+3 rows in set (0,00 sec)
+
+mysql> SELECT * FROM camel;
++----+--------------+---------------+----------------+----------------+
+| id | camel_name   | date_of_birth | command        | pack_animal_id |
++----+--------------+---------------+----------------+----------------+
+|  1 | Гордый       | 2022-05-02    | подойти        |              2 |
+|  2 | Джу          | 2016-10-22    | лежать         |              2 |
+|  3 | Чакайд       | 2021-04-12    | лежать         |              2 |
++----+--------------+---------------+----------------+----------------+
+3 rows in set (0,00 sec)
+
+mysql> SELECT * FROM donkey;
++----+-------------+---------------+------------------------------+----------------+
+| id | donkey_name | date_of_birth | command                      | pack_animal_id |
++----+-------------+---------------+------------------------------+----------------+
+|  1 | Рокси       | 2018-02-03    | бегать по кругу              |              3 |
+|  2 | Бони        | 2019-11-01    | принеси                      |              3 |
+|  3 | Луна        | 2022-04-09    | лежать                       |              3 |
++----+-------------+---------------+------------------------------+----------------+
+3 rows in set (0,00 sec)
+
+
+10. Удалив из таблицы верблюдов, т.к. верблюдов решили перевезти в другой
+питомник на зимовку. Объединить таблицы лошади, и ослы в одну таблицу.
+
+
+mysql> drop table camel;
+Query OK, 0 rows affected (0,02 sec)
+
+mysql> DELETE FROM pack_animal WHERE animal_name = 'camels';
+Query OK, 1 row affected (0,04 sec)mysql> SELECT id, (horse_name)AS pack_animals_name, date_of_birth, command, pack_animal_id FROM horse UNION SELECT  id, d
+onkey_name, date_of_birth, command, pack_animal_id FROM donkey;
++----+-------------------+---------------+------------------------------+----------------+
+| id | pack_animals_name | date_of_birth | command                      | pack_animal_id |
++----+-------------------+---------------+------------------------------+----------------+
+|  1 | Ангел             | 2018-11-23    | подойти                      |              1 |
+|  2 | Дарко             | 2020-08-03    | бегать по кругу              |              1 |
+|  3 | Буран             | 2021-04-12    | лежать                       |              1 |
+|  1 | Рокси             | 2018-02-03    | бегать по кругу              |              3 |
+|  2 | Бони              | 2019-11-01    | принеси                      |              3 |
+|  3 | Луна              | 2022-04-09    | лежать                       |              3 |
++----+-------------------+---------------+------------------------------+----------------+
+6 rows in set (0,00 sec
+
+
+
+12. Объединить все таблицы в одну, при этом сохраняя поля, указывающие на
+прошлую принадлежность к старым таблицам.
+
+mysql> CREATE TABLE all_animals AS(SELECT (horse_name)AS animal_names, date_of_birth, command,  
+(pack_animal_id)AS animal_id FROM horse UNION SELECT donkey_name, date_of_birth, command, pack_animal_id 
+FROM donkey UNION SELECT dog_name,  date_of_birth, command, pet_id FROM dog UNION SELECT cat_name, date_of_birth,
+ command,pet_id FROM cat UNION SELECT hamster_name, date_of_birth, command,pet_id FROM hamster);
+Query OK, 15 rows affected (0,03 sec)
+Records: 15  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM all_animals;
++--------------+---------------+------------------------------+-----------+
+| animal_names | date_of_birth | command                      | animal_id |
++--------------+---------------+------------------------------+-----------+
+| Ангел        | 2018-11-23    | подойти                      |         1 |
+| Дарко        | 2020-08-03    | бегать по кругу              |         1 |
+| Буран        | 2021-04-12    | лежать                       |         1 |
+| Рокси        | 2018-02-03    | бегать по кругу              |         3 |
+| Бони         | 2019-11-01    | принеси                      |         3 |
+| Луна         | 2022-04-09    | лежать                       |         3 |
+| Тузик        | 2022-10-01    | сидеть                       |         1 |
+| Шарик        | 2021-08-01    | голос                        |         1 |
+| Жучка        | 2023-07-13    | лежать                       |         1 |
+| Мурзик       | 2022-11-09    | ко мне                       |         2 |
+| Барсик       | 2023-12-10    | проси                        |         2 |
+| Вася         | 2023-07-13    | лежать                       |         2 |
+| Пончик       | 2022-12-11    | стоять                       |         3 |
+| Рыжик        | 2022-11-11    | бегать по кругу              |         3 |
+| Венчик       | 2022-10-16    | ползти                       |         3 |
++--------------+---------------+------------------------------+-----------+
+15 rows in set (0,00 sec)
+
+11.Создать новую таблицу “молодые животные” в которую попадут все
+животные старше 1 года, но младше 3 лет и в отдельном столбце с точностью
+до месяца подсчитать возраст животных в новой таблице
+
+mysql>  CREATE TABLE age_animals AS(SELECT animal_names, date_of_birth,
+CURRENT_DATE,(YEAR(CURRENT_DATE)-YEAR(date_of_bi
+rth)) AS age FROM all_animals);
+Query OK, 15 rows affected (0,02 sec)
+Records: 15  Duplicates: 0  Warnings: 0
+mysql> SELECT * FROM age_animals;
++--------------+---------------+--------------+------+
+| animal_names | date_of_birth | CURRENT_DATE | age  |
++--------------+---------------+--------------+------+
+| Ангел        | 2018-11-23    | 2024-02-01   |    6 |
+| Дарко        | 2020-08-03    | 2024-02-01   |    4 |
+| Буран        | 2021-04-12    | 2024-02-01   |    3 |
+| Рокси        | 2018-02-03    | 2024-02-01   |    6 |
+| Бони         | 2019-11-01    | 2024-02-01   |    5 |
+| Луна         | 2022-04-09    | 2024-02-01   |    2 |
+| Тузик        | 2022-10-01    | 2024-02-01   |    2 |
+| Шарик        | 2021-08-01    | 2024-02-01   |    3 |
+| Жучка        | 2023-07-13    | 2024-02-01   |    1 |
+| Мурзик       | 2022-11-09    | 2024-02-01   |    2 |
+| Барсик       | 2023-12-10    | 2024-02-01   |    1 |
+| Вася         | 2023-07-13    | 2024-02-01   |    1 |
+| Пончик       | 2022-12-11    | 2024-02-01   |    2 |
+| Рыжик        | 2022-11-11    | 2024-02-01   |    2 |
+| Венчик       | 2022-10-16    | 2024-02-01   |    2 |
++--------------+---------------+--------------+------+
+15 rows in set (0,00 sec)
+
+
+mysql> CREATE TABLE young_animals (SELECT * FROM age_animals WHERE age BETWEEN 1 AND 3);
+Query OK, 11 rows affected (0,05 sec)
+Records: 11  Duplicates: 0  Warnings: 0
+
+mysql> SELECT*FROM young_animals;
++--------------+---------------+--------------+------+
+| animal_names | date_of_birth | CURRENT_DATE | age  |
++--------------+---------------+--------------+------+
+| Буран        | 2021-04-12    | 2024-02-01   |    3 |
+| Луна         | 2022-04-09    | 2024-02-01   |    2 |
+| Тузик        | 2022-10-01    | 2024-02-01   |    2 |
+| Шарик        | 2021-08-01    | 2024-02-01   |    3 |
+| Жучка        | 2023-07-13    | 2024-02-01   |    1 |
+| Мурзик       | 2022-11-09    | 2024-02-01   |    2 |
+| Барсик       | 2023-12-10    | 2024-02-01   |    1 |
+| Вася         | 2023-07-13    | 2024-02-01   |    1 |
+| Пончик       | 2022-12-11    | 2024-02-01   |    2 |
+| Рыжик        | 2022-11-11    | 2024-02-01   |    2 |
+| Венчик       | 2022-10-16    | 2024-02-01   |    2 |
++--------------+---------------+--------------+------+
+11 rows in set (0,00 sec)
